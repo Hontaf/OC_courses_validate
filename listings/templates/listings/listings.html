@@ -1,0 +1,22 @@
+
+{% extends 'listings/base.html' %}
+{% block content %}
+<h1>Ma page reservée aux annonces !</h1>
+<p>
+    J'ai
+    {% if listings|length < 5 %}
+        peu de
+    {% elif listings|length < 10 %}
+        quelques
+    {% else %}
+        beaucoup de
+    {% endif %}
+        D'annonces à faire 
+</p>
+        
+   <!--<li>{{ first_band.name }}</li>--> 
+   {% for listing in listings %}
+   <li>{{ listing.title |upper }}</li>
+   {% endfor %}
+        
+{% endblock %}

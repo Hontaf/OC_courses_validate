@@ -1,0 +1,25 @@
+
+{% extends 'listings/base.html' %}
+
+{% block content %}
+
+<h2>{{ listing.title}}</h2>
+
+<ul>
+    <li>Type: {{ listing.get_type_display }}</li>
+ <li>Description: {{ listing.descrption }}</li>
+ <li>Solde : {{listing.sold|yesno }}</li> <!--yesno est un filtre de gabarit django pour convertir true en yes -->
+ {% if listing.year %}
+ <li>Annéé :{{ listing.year }}</li>
+ {% endif %}
+ {% if listing.band %}
+ <li>Groupe:{{listing.band.name}}</li>
+ {% endif %}
+</ul>
+
+
+
+<a href="{% url 'listing-list' %}">Retour aux annonces </a>
+<a href="{% url 'listing-change' listing.id %}">Modifier</a>
+<a href="{% url 'listing-delete' listing.id %}">Suppriimer</a>
+{% endblock %}
